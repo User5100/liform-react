@@ -17,10 +17,10 @@ const processFile = (onChange, e) => {
   });
 };
 
-const File = field => {
+const File = (field) => {
   const className = classNames([
     "form-group",
-    { "has-error": field.meta.touched && field.meta.error }
+    { "has-error": field.meta.touched && field.meta.error },
   ]);
   return (
     <div className={className}>
@@ -35,16 +35,15 @@ const File = field => {
         className="form-control"
         type="file"
       />
-      {field.meta.touched &&
-        field.meta.error && (
-          <span className="help-block">{field.meta.error}</span>
-        )}
+      {field.meta.touched && field.meta.error && (
+        <span className="help-block">{field.meta.error}</span>
+      )}
       {field.description && <span>{field.description}</span>}
     </div>
   );
 };
 
-const FileWidget = props => {
+const FileWidget = (props) => {
   return (
     <Field
       component={File}

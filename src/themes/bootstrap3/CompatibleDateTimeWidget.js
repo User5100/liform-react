@@ -11,22 +11,22 @@ const range = (start, end) =>
 const rangeZeroPad = (start, end) =>
   Array.from({ length: end - start }, (v, k) => ("0" + (k + start)).slice(-2));
 
-const extractYear = value => {
+const extractYear = (value) => {
   return extractDateTimeToken(value, 0);
 };
-const extractMonth = value => {
+const extractMonth = (value) => {
   return extractDateTimeToken(value, 1);
 };
-const extractDay = value => {
+const extractDay = (value) => {
   return extractDateTimeToken(value, 2);
 };
-const extractHour = value => {
+const extractHour = (value) => {
   return extractDateTimeToken(value, 3);
 };
-const extractMinute = value => {
+const extractMinute = (value) => {
   return extractDateTimeToken(value, 4);
 };
-const extractSecond = value => {
+const extractSecond = (value) => {
   return extractDateTimeToken(value, 5);
 };
 
@@ -52,7 +52,7 @@ class CompatibleDateTime extends React.Component {
       day: null,
       hour: null,
       minute: null,
-      second: null
+      second: null,
     };
     this.onBlur = this.onBlur.bind(this);
   }
@@ -89,7 +89,7 @@ class CompatibleDateTime extends React.Component {
     const field = this.props;
     const className = classNames([
       "form-group",
-      { "has-error": field.meta.touched && field.meta.error }
+      { "has-error": field.meta.touched && field.meta.error },
     ]);
     return (
       <div className={className}>
@@ -158,10 +158,9 @@ class CompatibleDateTime extends React.Component {
             />
           </li>
         </ul>
-        {field.meta.touched &&
-          field.meta.error && (
-            <span className="help-block">{field.meta.error}</span>
-          )}
+        {field.meta.touched && field.meta.error && (
+          <span className="help-block">{field.meta.error}</span>
+        )}
         {field.description && (
           <span className="help-block">{field.description}</span>
         )}
@@ -169,7 +168,7 @@ class CompatibleDateTime extends React.Component {
     );
   }
 }
-const CompatibleDateTimeWidget = props => {
+const CompatibleDateTimeWidget = (props) => {
   return (
     <Field
       component={CompatibleDateTime}

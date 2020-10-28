@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Field } from "react-final-form";
 
-const renderInput = field => {
+const renderInput = (field) => {
   const className = classNames([
     "form-group",
-    { "has-error": field.meta.touched && field.meta.error }
+    { "has-error": field.meta.touched && field.meta.error },
   ]);
   return (
     <div className={className}>
@@ -20,10 +20,9 @@ const renderInput = field => {
         className="form-control"
         placeholder={field.placeholder}
       />
-      {field.meta.touched &&
-        field.meta.error && (
-          <span className="help-block">{field.meta.error}</span>
-        )}
+      {field.meta.touched && field.meta.error && (
+        <span className="help-block">{field.meta.error}</span>
+      )}
       {field.description && (
         <span className="help-block">{field.description}</span>
       )}
@@ -31,7 +30,7 @@ const renderInput = field => {
   );
 };
 
-const BaseInputWidget = props => {
+const BaseInputWidget = (props) => {
   return (
     <Field
       component={renderInput}
@@ -53,7 +52,7 @@ BaseInputWidget.propTypes = {
   required: PropTypes.bool,
   fieldName: PropTypes.string,
   label: PropTypes.string,
-  normalizer: PropTypes.func
+  normalizer: PropTypes.func,
 };
 
 export default BaseInputWidget;

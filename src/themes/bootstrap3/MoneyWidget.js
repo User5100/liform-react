@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Field } from "react-final-form";
 
-const renderInput = field => {
+const renderInput = (field) => {
   const className = classNames([
     "form-group",
-    { "has-error": field.meta.touched && field.meta.error }
+    { "has-error": field.meta.touched && field.meta.error },
   ]);
   return (
     <div className={className}>
@@ -24,10 +24,9 @@ const renderInput = field => {
           placeholder={field.placeholder}
         />
       </div>
-      {field.meta.touched &&
-        field.meta.error && (
-          <span className="help-block">{field.meta.error}</span>
-        )}
+      {field.meta.touched && field.meta.error && (
+        <span className="help-block">{field.meta.error}</span>
+      )}
       {field.description && (
         <span className="help-block">{field.description}</span>
       )}
@@ -35,7 +34,7 @@ const renderInput = field => {
   );
 };
 
-const MoneyWidget = props => {
+const MoneyWidget = (props) => {
   return (
     <Field
       component={renderInput}
@@ -55,7 +54,7 @@ MoneyWidget.propTypes = {
   label: PropTypes.string,
   theme: PropTypes.object,
   multiple: PropTypes.bool,
-  required: PropTypes.bool
+  required: PropTypes.bool,
 };
 
 export default MoneyWidget;

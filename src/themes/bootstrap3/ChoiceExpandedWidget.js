@@ -8,10 +8,10 @@ const zipObject = (props, values) =>
     {}
   );
 
-const renderChoice = field => {
+const renderChoice = (field) => {
   const className = classNames([
     "form-group",
-    { "has-error": field.meta.touched && field.meta.error }
+    { "has-error": field.meta.touched && field.meta.error },
   ]);
   const options = field.schema.enum;
   const optionNames = field.schema.enum_titles || options;
@@ -30,17 +30,16 @@ const renderChoice = field => {
               name={field.input.name}
               value={value}
               checked={field.input.value === value}
-              onChange={e => field.input.onChange(value)}
+              onChange={(e) => field.input.onChange(value)}
             />
             {name}
           </label>
         </div>
       ))}
 
-      {field.meta.touched &&
-        field.meta.error && (
-          <span className="help-block">{field.meta.error}</span>
-        )}
+      {field.meta.touched && field.meta.error && (
+        <span className="help-block">{field.meta.error}</span>
+      )}
       {field.description && (
         <span className="help-block">{field.description}</span>
       )}
@@ -48,7 +47,7 @@ const renderChoice = field => {
   );
 };
 
-const ChoiceExpandedWidget = props => {
+const ChoiceExpandedWidget = (props) => {
   return (
     <Field
       component={renderChoice}

@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { change } from "redux-form";
+import { change } from "react-final-form";
 import { connect } from "react-redux";
 import renderField from "../../renderField";
-import { map as _map} from "lodash";
+import { map as _map } from "lodash";
 
 class OneOfChoiceWidget extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      choice: 0
+      choice: 0,
     };
     this.renderOption = this.renderOption.bind(this);
     this.selectItem = this.selectItem.bind(this);
@@ -77,7 +77,7 @@ OneOfChoiceWidget.propTypes = {
   label: PropTypes.string,
   theme: PropTypes.object,
   multiple: PropTypes.bool,
-  required: PropTypes.bool
+  required: PropTypes.bool,
 };
 
 export default connect()(OneOfChoiceWidget);

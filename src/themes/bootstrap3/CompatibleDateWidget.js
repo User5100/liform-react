@@ -11,13 +11,13 @@ const range = (start, end) =>
 const rangeZeroPad = (start, end) =>
   Array.from({ length: end - start }, (v, k) => ("0" + (k + start)).slice(-2));
 
-const extractYear = value => {
+const extractYear = (value) => {
   return extractDateToken(value, 0);
 };
-const extractMonth = value => {
+const extractMonth = (value) => {
   return extractDateToken(value, 1);
 };
-const extractDay = value => {
+const extractDay = (value) => {
   return extractDateToken(value, 2);
 };
 
@@ -41,7 +41,7 @@ class CompatibleDate extends React.Component {
       day: null,
       hour: null,
       minute: null,
-      second: null
+      second: null,
     };
     this.onBlur = this.onBlur.bind(this);
   }
@@ -71,7 +71,7 @@ class CompatibleDate extends React.Component {
     const field = this.props;
     const className = classNames([
       "form-group",
-      { "has-error": field.meta.touched && field.meta.error }
+      { "has-error": field.meta.touched && field.meta.error },
     ]);
     return (
       <div className={className}>
@@ -110,10 +110,9 @@ class CompatibleDate extends React.Component {
             />
           </li>
         </ul>
-        {field.meta.touched &&
-          field.meta.error && (
-            <span className="help-block">{field.meta.error}</span>
-          )}
+        {field.meta.touched && field.meta.error && (
+          <span className="help-block">{field.meta.error}</span>
+        )}
         {field.description && (
           <span className="help-block">{field.description}</span>
         )}
@@ -121,7 +120,7 @@ class CompatibleDate extends React.Component {
     );
   }
 }
-const CompatibleDateWidget = props => {
+const CompatibleDateWidget = (props) => {
   return (
     <Field
       component={CompatibleDate}

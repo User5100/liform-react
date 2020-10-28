@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Field } from "react-final-form";
 
-const renderInput = field => {
+const renderInput = (field) => {
   const className = classNames([
     "form-group",
-    { "has-error": field.meta.touched && field.meta.error }
+    { "has-error": field.meta.touched && field.meta.error },
   ]);
   return (
     <div className={className}>
@@ -21,10 +21,9 @@ const renderInput = field => {
           {field.label}
         </label>
       </div>
-      {field.meta.touched &&
-        field.meta.error && (
-          <span className="help-block">{field.meta.error}</span>
-        )}
+      {field.meta.touched && field.meta.error && (
+        <span className="help-block">{field.meta.error}</span>
+      )}
       {field.description && (
         <span className="help-block">{field.description}</span>
       )}
@@ -32,7 +31,7 @@ const renderInput = field => {
   );
 };
 
-const CheckboxWidget = props => {
+const CheckboxWidget = (props) => {
   return (
     <Field
       component={renderInput}
@@ -50,7 +49,7 @@ CheckboxWidget.propTypes = {
   schema: PropTypes.object.isRequired,
   fieldName: PropTypes.string,
   label: PropTypes.string,
-  theme: PropTypes.object
+  theme: PropTypes.object,
 };
 
 export default CheckboxWidget;

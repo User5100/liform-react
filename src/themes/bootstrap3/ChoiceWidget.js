@@ -4,10 +4,10 @@ import classNames from "classnames";
 import { Field } from "react-final-form";
 import { zipObject as _zipObject, map as _map } from "lodash";
 
-const renderSelect = field => {
+const renderSelect = (field) => {
   const className = classNames([
     "form-group",
-    { "has-error": field.meta.touched && field.meta.error }
+    { "has-error": field.meta.touched && field.meta.error },
   ]);
   const options = field.schema.enum;
   const optionNames = field.schema.enum_titles || options;
@@ -25,12 +25,11 @@ const renderSelect = field => {
         required={field.required}
         multiple={field.multiple}
       >
-        {!field.required &&
-          !field.multiple && (
-            <option key={""} value={""}>
-              {field.placeholder}
-            </option>
-          )}
+        {!field.required && !field.multiple && (
+          <option key={""} value={""}>
+            {field.placeholder}
+          </option>
+        )}
         {_map(selectOptions, (name, value) => {
           return (
             <option key={value} value={value}>
@@ -40,10 +39,9 @@ const renderSelect = field => {
         })}
       </select>
 
-      {field.meta.touched &&
-        field.meta.error && (
-          <span className="help-block">{field.meta.error}</span>
-        )}
+      {field.meta.touched && field.meta.error && (
+        <span className="help-block">{field.meta.error}</span>
+      )}
       {field.description && (
         <span className="help-block">{field.description}</span>
       )}
@@ -51,7 +49,7 @@ const renderSelect = field => {
   );
 };
 
-const ChoiceWidget = props => {
+const ChoiceWidget = (props) => {
   return (
     <Field
       component={renderSelect}
@@ -73,7 +71,7 @@ ChoiceWidget.propTypes = {
   label: PropTypes.string,
   theme: PropTypes.object,
   multiple: PropTypes.bool,
-  required: PropTypes.bool
+  required: PropTypes.bool,
 };
 
 export default ChoiceWidget;

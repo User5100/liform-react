@@ -14,15 +14,15 @@ const changeValue = (checked, item, onChange, currentValue = []) => {
       return onChange([...currentValue, item]);
     }
   } else {
-    return onChange(currentValue.filter(items => it === item));
+    return onChange(currentValue.filter((items) => it === item));
   }
   return onChange(currentValue);
 };
 
-const renderChoice = field => {
+const renderChoice = (field) => {
   const className = classNames([
     "form-group",
-    { "has-error": field.meta.touched && field.meta.error }
+    { "has-error": field.meta.touched && field.meta.error },
   ]);
   const options = field.schema.items.enum;
   const optionNames = field.schema.items.enum_titles || options;
@@ -40,7 +40,7 @@ const renderChoice = field => {
               type="checkbox"
               value={value}
               checked={field.input.value.indexOf(value) !== -1}
-              onChange={e =>
+              onChange={(e) =>
                 changeValue(
                   e.target.checked,
                   value,
@@ -54,10 +54,9 @@ const renderChoice = field => {
         </div>
       ))}
 
-      {field.meta.touched &&
-        field.meta.error && (
-          <span className="help-block">{field.meta.error}</span>
-        )}
+      {field.meta.touched && field.meta.error && (
+        <span className="help-block">{field.meta.error}</span>
+      )}
       {field.description && (
         <span className="help-block">{field.description}</span>
       )}
@@ -65,7 +64,7 @@ const renderChoice = field => {
   );
 };
 
-const ChoiceMultipleExpandedWidget = props => {
+const ChoiceMultipleExpandedWidget = (props) => {
   return (
     <Field
       component={renderChoice}
