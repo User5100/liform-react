@@ -1,13 +1,13 @@
-import { SubmissionError } from "redux-form";
+import { SubmissionError } from "react-final-form";
 import { isEmpty as _isEmpty } from "lodash"; // added for empty check
 
-const convertToReduxFormErrors = obj => {
+const convertToReduxFormErrors = (obj) => {
   let objectWithoutChildrenAndFalseErrors = {};
-  Object.keys(obj).map(name => {
+  Object.keys(obj).map((name) => {
     if (name === "children") {
       objectWithoutChildrenAndFalseErrors = {
         ...objectWithoutChildrenAndFalseErrors,
-        ...convertToReduxFormErrors(obj[name])
+        ...convertToReduxFormErrors(obj[name]),
       };
     } else {
       if (obj[name].hasOwnProperty("children")) {
@@ -30,7 +30,7 @@ const convertToReduxFormErrors = obj => {
   return objectWithoutChildrenAndFalseErrors;
 };
 
-const processSubmitErrors = errors => {
+const processSubmitErrors = (errors) => {
   if (errors.hasOwnProperty("errors")) {
     errors = convertToReduxFormErrors(errors.errors);
     throw new SubmissionError(errors);
