@@ -12,9 +12,11 @@ import compileSchema from "./compileSchema";
 const BaseForm = (props) => {
   return (
     <Form
-      validate={props.syncValidation || buildSy}
+      validate={
+        props.syncValidation || buildSyncValidation(props.schema, props.ajv)
+      }
       initialValues={props.initialValues}
-      context={{ ...props.context, formName }}
+      context={{ ...props.context, formName: props.formName }}
     >
       {({ schema, handleSubmit, theme, error, submitting, context }) => (
         <form onSubmit={handleSubmit}>
@@ -41,6 +43,7 @@ const Liform = (props) => {
   return (
     <FinalForm
       renderFields={renderField.bind(this)}
+      formName={formName}
       {...props}
       schema={schema}
     />
