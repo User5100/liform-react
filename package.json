@@ -76,5 +76,6 @@
     "setupFiles": [
       "./src/__tests__/setup.js"
     ]
-  }
+  },
+  "prepare": "npm run build"
 }
