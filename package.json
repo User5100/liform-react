@@ -8,7 +8,8 @@
     "build:lib": "babel src --out-dir lib",
     "lint": "eslint src",
     "test": "jest",
-    "test:cov": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text npm test"
+    "test:cov": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text npm test",
+    "prepare": "npm run build"
   },
   "keywords": [
     "react",
@@ -76,6 +77,5 @@
     "setupFiles": [
       "./src/__tests__/setup.js"
     ]
-  },
-  "prepare": "npm run build"
+  }
 }
