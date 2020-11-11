@@ -9,7 +9,8 @@
     "lint": "eslint src",
     "test": "jest",
     "test:cov": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text npm test",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "postinstall": "npm run build"
   },
   "keywords": [
     "react",
