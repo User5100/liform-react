@@ -18,6 +18,7 @@ const BaseForm = (props) => {
       initialValues={props.initialValues}
       context={{ ...props.context, formName: props.formName }}
       onSubmit={props.onSubmit}
+      {...props}
     >
       {({ schema, handleSubmit, theme, error, submitting, context }) => (
         <form onSubmit={handleSubmit}>
@@ -41,6 +42,7 @@ const Liform = (props) => {
   const schema = compileSchema(props.schema);
   const formName = props.formKey || props.schema.title || "form";
   const FinalForm = props.baseForm || BaseForm;
+
   return (
     <FinalForm
       renderFields={renderField.bind(this)}
