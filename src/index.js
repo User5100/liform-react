@@ -17,6 +17,7 @@ const BaseForm = (props) => {
       }
       initialValues={props.initialValues}
       context={{ ...props.context, formName: props.formName }}
+      onSubmit={props.onSubmit}
     >
       {({ schema, handleSubmit, theme, error, submitting, context }) => (
         <form onSubmit={handleSubmit}>
@@ -46,6 +47,7 @@ const Liform = (props) => {
       formName={formName}
       {...props}
       schema={schema}
+      onSubmit={props.onSubmit}
     />
   );
 };
